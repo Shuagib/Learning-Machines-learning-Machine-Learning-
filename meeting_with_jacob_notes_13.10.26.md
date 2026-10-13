@@ -1,3 +1,5 @@
+Simon:
+
 Hrm bruger prefix attention.
 
 trænings-kort
@@ -28,7 +30,7 @@ start med peter
 Apply gemma 4s i transformers til at loade HMR-text
 
 
-
+Shuagib:
 
 HRM bidirectional attention
 Slut 90'erne
@@ -85,3 +87,29 @@ metric:
 ekstra ting:
 - Add reasoning trace
 - 
+
+
+Johannes:
+- han har trænet ocr, image classiication og reasoning
+- da han kun gjorde det med en task havde en en acc p 80, men med 4 tasks har han slut 90
+- han ikke vedligeholdt text delen
+- prefix model betyder at alt information i prompt er set som en encoder model, så den kan kigge frem og tilbage (så tekst kan arbejde med billedet)
+- vi kunne arbejde med at effektivisere det, så vi minimere hvor mange tokens vi reservere til billedet
+- vi skal træne mimir og mlp sammen, men holde vision backbone frosset
+- subsample taskene fordi de er kæmpestore
+- bare siglip
+    - hare flere opensource versioner
+- vi skal argumentere for at 2 mlp lag er bedre end en (Simon har læst en artikel)
+- sammenligne med en anden transformer (der ikke har sparse attention) ouroro fra bytedance med loop. eller 2b QWEN model. tjek ordbogens tech rapporter og tag en af dem de sammenligner med
+    - Sammenlign skalering med loss for at mimir skal skalere hurtigere
+    - sammenlign om mimir hurtigere generaliserer til et test set
+- vi skal overveje om der skal være reasonning traces (den reasoner noramlt i latent, men det hælper med tokens)
+- vi skal have en training acc på 70, og alt over er godt. hvis ikke, snak med ham fordi det kunne bare være skalering
+- vi skal starte fra peters repo
+    - https://github.com/schneiderkamplab/HRM-Text
+    - (ikke tag submoduler)
+    - varme den op 3e-4 over 2k steps, 2k steps med linear, og cosine annealing efterfølgende
+    - han har ikke fået gains efter 5000 steps, der rammer den et plateu
+- Først træner den på engelsk og så prøver at oversætte det til dansk og se hvor hurtigt den kan oversætte læringen fra engelsk til dansk
+- Det vigtigste er hvor meget data vi bruger, og hvor lidt compute vi kan bruge
+- apply gemma4 tokenizer inden vi giver den til mimir
