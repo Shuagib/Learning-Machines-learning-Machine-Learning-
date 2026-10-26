@@ -19,9 +19,8 @@ prompts = [
 ]
 
 for prompt in prompts:
-
     inputs = tokenizer.apply_chat_template(
-        prompt, 
+        [prompt], 
         add_generation_prompt=True,
         tokenize=True,
         return_dict=True,
