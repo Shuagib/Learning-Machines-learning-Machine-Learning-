@@ -13,7 +13,7 @@ class Mimir():
         model = AutoModelForCausalLM.from_pretrained(name).to(device)
         return model, tokenizer
 
-    def embed(self, prompt: str):
+    def embed(self, prompt: dict):
         tokens = self.tokenizer.apply_chat_template(
                 [prompt], 
                 add_generation_prompt=True,
@@ -27,7 +27,7 @@ class Mimir():
         attention_mask = torch.ones(input_embeddings.shape[0:2], dtype=torch.long, device=self.model.device)
         with torch.no_grad():
                     outputs = self.model.generate(
-                        input_embeds=input_embeddings,
+                        inputs_embeds=input_embeddings,
                         attention_mask=attention_mask,
                         max_new_tokens=max_new_tokens)
         text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
