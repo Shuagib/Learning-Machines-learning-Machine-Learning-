@@ -5,7 +5,7 @@ class MLP(nn.Module):
         super(MLP, self).__init__()
         self.layer1 = nn.Linear(in_features=in_dim, out_features=hidden_dim)
         self.layer2 = nn.Linear(in_features=hidden_dim, out_features=out_dim)
-        self.act = nn.GeLU()
+        self.act = nn.GELU()
 
     def forward(self, x):
         x = self.layer1(x)
