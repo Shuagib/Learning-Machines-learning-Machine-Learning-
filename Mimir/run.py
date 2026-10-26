@@ -14,8 +14,8 @@ model, tokenizer = load_model_Mimir(device=device) # Mimir model load
 
 prompts = [
     {"role": "user", "content": "Hvad er Danmarks hovedstad?"},
-    # {"role": "user", "content": "Hvilket land er verdens bedste land"},
-    # {"role": "user", "content": "Hvad er Danmarks national ret"},
+    {"role": "user", "content": "Hvilket land er verdens bedste land"},
+    {"role": "user", "content": "Hvad er Danmarks national ret"},
 ]
 
 tokenizer.padding_side = "left"
