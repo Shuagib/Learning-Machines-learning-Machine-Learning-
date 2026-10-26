@@ -21,7 +21,7 @@ prompts = [
 tokenizer.padding_side = "left"
 
 inputs = tokenizer.apply_chat_template(
-    prompts, 
+    prompts[0], 
     add_generation_prompt=True,
     tokenize=True,
     return_dict=True,
