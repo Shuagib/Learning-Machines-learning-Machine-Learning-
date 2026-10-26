@@ -6,11 +6,18 @@ from model import load_model_Mimir
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 model, tokenizer = load_model_Mimir(device=device) # Mimir model load
 
+# prompts = [
+#     "Hvem er ham fyren her",
+#     "Har denne mand tøj på",
+#     "Hvor gammel er manden på billedet"
+# ]
+
 prompts = [
-    "Hvem er ham fyren her",
-    "Har denne mand tøj på",
-    "Hvor gammel er manden på billedet"
+    "Hvad er Danmarks hovedstad",
+    "Hvilket land er verdens bedste land",
+    "Hvad er Danmarks national ret"
 ]
+
 tokenizer.padding_side = "left"
 
 inputs = tokenizer(prompts, return_tensors="pt", padding=True).to(model.device)
@@ -21,7 +28,7 @@ with torch.no_grad():
         max_new_tokens=100,
         do_sample=True,
         temperature=0.7,
-        pad_token_id=tokenizer.eos_token_id,
+        pad_token_id=tokenizer.pad_token_id,
     )
 
 new_tokens = output_ids[0,inputs["input_ids"].shape[1]:]
