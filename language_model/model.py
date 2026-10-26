@@ -6,7 +6,8 @@ class Mimir():
         self.model, self.tokenizer = self.load_model_Mimir(name=model_name, device=device)
         self.embedding = self.model.get_input_embeddings() 
 
-    def load_model_Mimir(self, name: str, device: str):
+    @staticmethod
+    def load_model_Mimir(name: str, device: str):
         tokenizer = AutoTokenizer.from_pretrained(name)
         tokenizer.padding_side = "left"
         model = AutoModelForCausalLM.from_pretrained(name, device_map="auto").to(device)

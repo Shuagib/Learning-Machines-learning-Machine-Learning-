@@ -6,6 +6,7 @@ class SigLIP2():
     def __init__(self, model_name: str, device: str):
         self.model, self.processor = self.load_model_SigLIP2(model_name, device=device)
 
+    @staticmethod
     def load_model_SigLIP2(name: str, device: str):
         model = SiglipVisionModel.from_pretrained(name, device_map="auto", attn_implementation="sdpa").to(device).eval()
         processor = AutoImageProcessor.from_pretrained(name)
