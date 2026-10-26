@@ -3,7 +3,7 @@ import torch
 
 from model import load_model_Mimir
 
-device = "mps"
+device = "cuda"
 model, tokenizer = load_model_Mimir(device=device) # Mimir model load
 
 prompts = [
