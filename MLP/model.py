@@ -10,7 +10,7 @@ class MLP(nn.Module):
     def forward(self, x):
         x = self.layer1(x)
         x = self.act(x)
-        x = self.layer2(x)
+        x = self.layer2(x.T)
         return x # l2(act(f1(x))) 
 
 def  load_model_MLP(in_dim: int, hidden_dim: int, out_dim: int, device: str):

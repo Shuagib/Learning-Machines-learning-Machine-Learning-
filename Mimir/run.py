@@ -29,8 +29,7 @@ inputs = tokenizer.apply_chat_template(
     ).to(model.device)
 
 with torch.no_grad():
-    outputs = model.generate(**inputs, max_new_tokens=256)
-
+    outputs = model.generate(**inputs, max_new_tokens=256, skip_special_tokens=True)
 
 text = tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:])
 
