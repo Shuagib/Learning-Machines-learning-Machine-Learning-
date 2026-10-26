@@ -6,17 +6,17 @@ from model import load_model_Mimir
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 model, tokenizer = load_model_Mimir(device=device) # Mimir model load
 tokenizer.padding_side = "left"
-# prompts = [
-#     "Hvem er ham fyren her",
-#     "Har denne mand tøj på",
-#     "Hvor gammel er manden på billedet"
-# ]
-
 prompts = [
-    {"role": "user", "content": "Hvad er Danmarks hovedstad?"},
-    {"role": "user", "content": "Hvilket land er verdens bedste land"},
-    {"role": "user", "content": "Hvad er Danmarks national ret"}
+    "Hvem er ham fyren her",
+    "Har denne mand tøj på",
+    "Hvor gammel er manden på billedet"
 ]
+
+# prompts = [
+#     {"role": "user", "content": "Hvad er Danmarks hovedstad?"},
+#     {"role": "user", "content": "Hvilket land er verdens bedste land"},
+#     {"role": "user", "content": "Hvad er Danmarks national ret"}
+# ]
 
 for prompt in prompts:
     inputs = tokenizer.apply_chat_template(
