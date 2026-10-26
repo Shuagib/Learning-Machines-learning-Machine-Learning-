@@ -14,7 +14,7 @@ MLP_OUT_DIM = 24
 
 vm = SigLIP2(model_name=vm_model_name, device=device)
 mlp = MLP(MLP_IN_DIM, MLP_HID_DIM, MLP_OUT_DIM).to(device)
-llm = Mimir(model_name=vm_model_name, device=device)
+llm = Mimir(model_name=llm_model_name, device=device)
 
 vision_prompts = [
     {"role": "user", "content": "<image> Beskriv manden på billedet"}
