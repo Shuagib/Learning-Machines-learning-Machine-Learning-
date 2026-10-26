@@ -30,6 +30,7 @@ start med peter
 Apply gemma 4s i transformers til at loade HMR-text
 
 
+
 Shuagib:
 
 HRM bidirectional attention
