@@ -6,11 +6,6 @@ class MLP(nn.Module):
         self.layer1 = nn.Linear(in_features=in_dim, out_features=hidden_dim)
         self.layer2 = nn.Linear(in_features=hidden_dim, out_features=out_dim)
         self.act = nn.GeLU()
-    
-    @staticmethod
-    def  load_model_MLP(in_dim: int, hidden_dim: int, out_dim: int, device: str):
-        model = MLP(in_dim, hidden_dim, out_dim).to(device)
-        return model
 
     def forward(self, x):
         x = self.layer1(x)
