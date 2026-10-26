@@ -10,7 +10,7 @@ class Mimir():
     def load_model_Mimir(name: str, device: str):
         tokenizer = AutoTokenizer.from_pretrained(name)
         tokenizer.padding_side = "left"
-        model = AutoModelForCausalLM.from_pretrained(name, device_map="auto").to(device)
+        model = AutoModelForCausalLM.from_pretrained(name).to(device)
         return model, tokenizer
 
     def embed(self, prompt: str):
