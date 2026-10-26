@@ -13,25 +13,25 @@ model, tokenizer = load_model_Mimir(device=device) # Mimir model load
 # ]
 
 prompts = [
-    "Hvad er Danmarks hovedstad",
-    "Hvilket land er verdens bedste land",
-    "Hvad er Danmarks national ret"
+    {"role": "user", "content": "Hvad er Danmarks hovedstad?"},
+    {"role": "user", "content": "Hvilket land er verdens bedste land"},
+    {"role": "user", "content": "Hvad er Danmarks national ret"},
 ]
 
 tokenizer.padding_side = "left"
 
-inputs = tokenizer(prompts, return_tensors="pt", padding=True).to(model.device)
+inputs = tokenizer.apply_chat_template(
+    prompts, 
+    add_generation_prompt=True,
+    tokenize=True,
+    return_dict=True,
+    return_tensors="pt", 
+    ).to(model.device)
 
 with torch.no_grad():
-    output_ids = model.generate(
-        **inputs,
-        max_new_tokens=100,
-        do_sample=True,
-        temperature=0.7,
-        pad_token_id=tokenizer.pad_token_id,
-    )
+    outputs = model.generate(**inputs, max_new_tokens=256)
 
-new_tokens = output_ids[0,inputs["input_ids"].shape[1]:]
-output = tokenizer.decode(new_tokens, skip_special_tokens=True)
 
-print(output)
+text = tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:])
+
+print(text)

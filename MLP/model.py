@@ -1,5 +1,4 @@
 import torch.nn as nn
-from transformers import SiglipVisionModel, AutoImageProcessor
 
 class MLP(nn.Module):
     def __init__(self, in_dim, hidden_dim, out_dim):
