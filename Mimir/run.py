@@ -18,7 +18,7 @@ inputs = tokenizer(prompts, return_tensors="pt", padding=True).to(model.device)
 with torch.no_grad():
     output_ids = model.generate(
         **inputs,
-        max_new_token=100,
+        max_new_tokens=100,
         do_sample=True,
         temperature=0.7,
         pad_token_id=tokenizer.eos_token_id,
