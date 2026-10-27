@@ -21,7 +21,7 @@ class Mimir():
                 return_dict=True,
                 return_tensors="pt", 
                 ).to(self.model.device)
-        return self.embedding(tokens)
+        return self.embedding(tokens["inputs_ids"])
 
     def generate_and_decode(self, input_embeddings: torch.Tensor, max_new_tokens: int = 256) -> str:
         attention_mask = torch.ones(input_embeddings.shape[0:2], dtype=torch.long, device=self.model.device)
