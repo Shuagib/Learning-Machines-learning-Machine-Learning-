@@ -15,13 +15,13 @@ class Mimir():
 
     def embed(self, prompt: dict):
         tokens = self.tokenizer.apply_chat_template(
-                [prompt], 
+                [prompt],
                 add_generation_prompt=True,
                 tokenize=True,
                 return_dict=True,
-                return_tensors="pt", 
+                return_tensors="pt",
                 ).to(self.model.device)
-        return self.embedding(tokens["inputs_ids"])
+        return self.embedding(tokens["input_ids"])
 
     def generate_and_decode(self, input_embeddings: torch.Tensor, max_new_tokens: int = 256) -> str:
         attention_mask = torch.ones(input_embeddings.shape[0:2], dtype=torch.long, device=self.model.device)

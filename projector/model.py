@@ -10,5 +10,5 @@ class MLP(nn.Module):
     def forward(self, x):
         x = self.layer1(x)
         x = self.act(x)
-        x = self.layer2(x.T)
+        x = self.layer2(x)
         return x # l2(act(f1(x))) 

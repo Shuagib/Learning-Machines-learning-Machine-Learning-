@@ -12,7 +12,7 @@ class SigLIP2():
         processor = AutoImageProcessor.from_pretrained(name)
         return model, processor
 
-    def run(self, image: Image.Image):
+    def embed(self, image: Image.Image):
         inputs = self.processor(images=image.convert("RGB"), return_tensors="pt").to(self.model.device)
         with torch.no_grad():
             outputs = self.model(**inputs)

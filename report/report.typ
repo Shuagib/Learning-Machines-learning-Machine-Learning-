@@ -1,8 +1,8 @@
-#import "@local/sdust:0.1.0": *
+#import "@preview/sdust:0.1.0": *
 
 #let title = [#v(-1.6em) Judge Me by My Size, Do You? Efficient Multi-Modal Learning for Mimir Using a Pretrained Vision Model #v(-0.5em)]
 
-#show: submission.with(
+#show: project.with(
   title: title,
   course: [#v(1em) AI508 Computer vision & AI509 Natural Language Processing],
   author: ("Simon Holm", "Johannes Rothe", "Shuagib Ibrahim"),
@@ -10,9 +10,10 @@
   supervisor: ([Lukas Poech Galke], [Peter Schneider-Kamp], [Jacob Nielsen]),
   date:   "Fall 2026",
   institution:   "Department of Mathematics \n and Computer Science",
-  //logo: image("IMADA_en.png", width:50%),
+  logo: image("IMADA_en.png", width:50%),
   info-width: 100%,
   outline-depth: 2,
+  
 )
 
 = Introduction
