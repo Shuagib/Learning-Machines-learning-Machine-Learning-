@@ -33,22 +33,12 @@ image_files = [
 images = [Image.open(IMAGE_DIR / name) for name in image_files]
 
 for prompt, image  in zip(vision_prompts, images):
-    
-    
-    
-    
-    
-    
     embedded_prompt = llm.embed(prompt) # [1, 20, 1536]
     embedded_image_patches = vm.embed(image) # [1, 256, 768]
     projected_embedded_patches = mlp(embedded_image_patches)
     combined_embedding = inject_patches(projected_embedded_patches, embedded_prompt)
     output = llm.generate_and_decode(combined_embedding)
-
-
-
-
-
+    
     #print("prompt emb size", embedded_prompt.shape)
     #print("image emb size", embedded_image_patches.shape)
     print(output)
